@@ -1,0 +1,5 @@
+24.07.2024
+
+1- terminalden aldığı arguman uzunluğuna göre (args.length if if else else)
+farklı claslardan objeler(telefon) oluşturup bunların
+istediğin methodlarını çağır
