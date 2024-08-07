@@ -3,3 +3,11 @@
 1- terminalden aldığı arguman uzunluğuna göre (args.length if if else else)
 farklı claslardan objeler(telefon) oluşturup bunların
 istediğin methodlarını çağır
+
+
+
+07.08
+
+ödv  chairden survior çözmeyi survivorlara ekle 
+
+tamir edilecek jenerator yap
