@@ -11,3 +11,15 @@ istediğin methodlarını çağır
 ödv  chairden survior çözmeyi survivorlara ekle 
 
 tamir edilecek jenerator yap
+
+
+
+14.08
+
+bana 
+sonraki ders abstract class uygulaması yap 
+interface yap
+
+sana 
+
+getter setter mantığı ile survivora bağlanma yavaşlama vs ekle
