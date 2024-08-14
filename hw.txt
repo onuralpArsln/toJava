@@ -19,6 +19,7 @@ tamir edilecek jenerator yap
 bana 
 sonraki ders abstract class uygulaması yap 
 interface yap
+async sync ornek 
 
 sana 
 
