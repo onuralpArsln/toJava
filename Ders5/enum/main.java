@@ -12,7 +12,7 @@ public class main {
 
 class Player {
     State currentState = State.Normal;
-    final PlayerClass currentClass = PlayerClass.Archer;
+    PlayerClass currentClass = PlayerClass.Mage;
 
     public void run() {
         switch (this.currentState) {
@@ -22,11 +22,9 @@ class Player {
             case Slowed:
                 System.out.println(" yavas Kosuyorum");
                 break;
-
             case Stunned:
                 System.out.println(" duruyorum");
                 break;
-
             default:
                 throw new AssertionError();
         }
