@@ -19,8 +19,17 @@ tamir edilecek jenerator yap
 bana 
 sonraki ders abstract class uygulaması yap 
 interface yap
-async sync ornek 
+
+########async sync ornek 
 
 sana 
 
 getter setter mantığı ile survivora bağlanma yavaşlama vs ekle
+
+
+
+28.08 
+generic tipler
+
+odev olarak 
+getter setter + ınterface + abstract class örnekleri
