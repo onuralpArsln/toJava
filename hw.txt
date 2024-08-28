@@ -20,7 +20,7 @@ bana
 sonraki ders abstract class uygulaması yap 
 interface yap
 
-########async sync ornek 
+
 
 sana 
 
@@ -38,6 +38,7 @@ getter setter + interface + abstract class örnekleri
 
 try catch gör 
 inheritlerde override
+async
 
 ______
 arraylist kullanarak survivorları bir listeye oluştur ve survivorların durumlarını yazıdr 
