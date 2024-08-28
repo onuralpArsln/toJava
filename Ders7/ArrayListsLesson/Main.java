@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         // Stringlerden Oluşan bir arraylist oluşturd
         ArrayList<String> names = new ArrayList<>();
+       
 
         // .add methodu ile yeni eleman eklemek mümkün
         names.add("Alice");

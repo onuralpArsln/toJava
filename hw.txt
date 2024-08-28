@@ -32,4 +32,19 @@ getter setter mantığı ile survivora bağlanma yavaşlama vs ekle
 generic tipler
 
 odev olarak 
-getter setter + ınterface + abstract class örnekleri
+getter setter + interface + abstract class örnekleri
+
+04 09 
+
+try catch gör 
+inheritlerde override
+
+______
+arraylist kullanarak survivorları bir listeye oluştur ve survivorların durumlarını yazıdr 
+cypherMachine ile etkişleşimi interface olarak yapalım sadece imza tanımlı bir implement
+hunterlarda beceri alanı oluşturalım
+interfaceden gelen method eğer doğru skill varsa hutnerda cihaz bozma 
+survivorda ise tamir özelliği olsun hızlı tamir becerisi kontrolü
+
+metthod adı interactWithCypher olabilir
+
