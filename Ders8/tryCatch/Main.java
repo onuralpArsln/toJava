@@ -1,14 +1,19 @@
 public class Main {
     public static void main(String[] args) {
 
-        ArrayProblem.createArrayProblem(1, 1, "asd");
+        ArrayProblem.createArrayProblem(10000, 5, "1");
+        ArrayProblem.createArrayProblem(1, 0, "1");
+        ArrayProblem.createArrayProblem(1, 1, "A");
+        ArrayProblem.createArrayProblem(1, 1, "1");
+
+        System.out.println("program cokmeden tamamlandi");
 
     }
 }
 
 class MathProblem {
 
-    public static void createMathProblem(int a, int b, String s) {
+    public static void createMathProblem(int a, int b) {
         try {
             int result = a / b; // use b=0 to test
             System.out.println(result);

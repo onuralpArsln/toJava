@@ -5,10 +5,12 @@ public class Main {
         genericAnimal.makeSound();
         genericAnimal.eat();
 
-        yazabilirsin dog = new yazabilirsin();
+        Dog dog = new Dog();
         dog.makeSound();
         dog.eat();
         dog.fetch();
+
+        System.out.println(NoteGenerator.categoryNotes(700));
     }
 }
 
@@ -23,11 +25,11 @@ class Animal {
     }
 }
 
-class yazabilirsin extends Animal {
+class Dog extends Animal {
     // Override olmazsa da çalışır ancak override best practice sayılır
     // 1- eğer method adını yanlış yazarsan override sana bunu fark ettirir
     // 2- method imzasındaki hataları fark ettirir
-    // 3- insan okumasını yazabilirsin
+    // 3- insan okumasını kolaylaştırır
     @Override
     public void makeSound() {
         System.out.println("The dog barks");
@@ -37,4 +39,27 @@ class yazabilirsin extends Animal {
     public void fetch() {
         System.out.println("The dog is fetching the ball");
     }
+}
+
+class NoteGenerator {
+
+    public static String categoryNotes(int note) {
+        // kullanıcı hatası önleme
+        if (note > 100) {
+            throw new java.lang.Error("Cok yuksek not");
+        } else if (0 > note) {
+            throw new java.lang.Error("Cok duşuk not");
+        }
+
+        // doğru çalışma mantığı
+        if (note > 70) {
+            return "Basarili";
+        } else if (note > 50) {
+            return "Zayif";
+        } else {
+            return "kaldi";
+        }
+
+    }
+
 }

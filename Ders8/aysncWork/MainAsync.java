@@ -22,6 +22,11 @@ public class MainAsync {
     }
 
     public static void task2() {
-        System.out.println("Task 2 completed");
+        try {
+            Thread.sleep(900);
+            System.out.println("Task 2 completed");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,6 +1,5 @@
 
 public class MainSync {
-
     public static void main(String[] args) {
         System.out.println("Start");
         task1();

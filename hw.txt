@@ -41,11 +41,20 @@ inheritlerde override
 async
 
 ______
-arraylist kullanarak survivorları bir listeye oluştur ve survivorların durumlarını yazıdr 
+arraylist kullanarak survivorları bir listeye oluştur ve survivorların durumlarını yazıdır 
 cypherMachine ile etkişleşimi interface olarak yapalım sadece imza tanımlı bir implement
 hunterlarda beceri alanı oluşturalım
 interfaceden gelen method eğer doğru skill varsa hutnerda cihaz bozma 
 survivorda ise tamir özelliği olsun hızlı tamir becerisi kontrolü
 
-metthod adı interactWithCypher olabilir
+method adı interactWithCypher olabilir
 
+_________________________________________
+
+
+11 09  
+override örneği  ekleyelim
+cypherMachine ile etkişleşimi interface olarak yapalım sadece imza tanımlı bir implement
+hunterlarda beceri alanı oluşturalım
+interfaceden gelen method eğer doğru skill varsa hutnerda cihaz bozma 
+survivorda ise tamir özelliği olsun hızlı tamir becerisi kontrolü

@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        // Stringlerden Oluşan bir arraylist oluşturd
+        // Stringlerden Oluşan bir arraylist oluşturduk
         ArrayList<String> names = new ArrayList<>();
-       
 
-        // .add methodu ile yeni eleman eklemek mümkün
+        // .add method ile yeni eleman eklemek mümkün
         names.add("Alice");
         names.add("Bob");
         names.add("Calvin");
