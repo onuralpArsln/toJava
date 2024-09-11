@@ -29,7 +29,7 @@ public class Main {
 
                 System.out.println("stream filitrelenebilir");
                 List<String> filtered = names.stream()
-                                .filter(name -> name.startsWith("A"))
+                                .filter(name -> name.startsWith("J"))
                                 .collect(Collectors.toList());
                 System.out.println(filtered);
 
