@@ -2,9 +2,12 @@ import java.awt.*;
 import javax.swing.*;
 
 // jpanel java swing içinde bir pencere oluşturma containerıdır.
+// swing bir gui widget toolkit yani arayüz oluşturma setidir
+
 public class Graphics2DTutorial extends JPanel {
     // component boyama mantığı içine burayı yazacağız
 
+    // boyama yapısını değiştiriyoruz
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -28,7 +31,7 @@ public class Graphics2DTutorial extends JPanel {
         JFrame frame = new JFrame("Pencere Adı");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
-        frame.add(new Graphics2DTutorial()); // Add JPanel to JFrame
+        frame.add(new Graphics2DTutorial()); // yeni bir JPanel oluşturduk ve onu JFrameYapısına ekledik
         frame.setVisible(true);
     }
 }
