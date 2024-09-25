@@ -6,6 +6,8 @@ public class Main {
         Complex complexTest = new Complex();
         complexTest.value = 132;
 
+        complexTest.run();
+
         Evaluater.runElement(complexTest);
         // Evaluater.runElement(basicTest);
 

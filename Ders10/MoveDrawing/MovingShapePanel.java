@@ -20,7 +20,7 @@ public class MovingShapePanel extends JPanel implements Runnable {
 
         // bir kutu çiziyor
         g2d.setColor(Color.RED);
-        g2d.fillRect(x, y, 50, 50);
+        g2d.fillRect(this.x, this.y, 50, 50);
     }
 
     // koordinat değişimi

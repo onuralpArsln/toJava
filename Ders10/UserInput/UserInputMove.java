@@ -20,7 +20,7 @@ public class UserInputMove extends JPanel implements Runnable, KeyListener {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        // bir kutu çiziyor
+        // bir kutu çiziyoruz
         g2d.setColor(Color.RED);
         g2d.fillRect(x, y, 50, 50);
     }
