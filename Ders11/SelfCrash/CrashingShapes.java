@@ -13,7 +13,7 @@ public class CrashingShapes extends JPanel implements Runnable {
     private final int obstacleY = 50;
 
     // hız değeri
-    private final int SPEED = 2;
+    private int SPEED = 2;
 
     // özel çizme mantığı
     @Override
@@ -36,6 +36,9 @@ public class CrashingShapes extends JPanel implements Runnable {
 
     // koordinat değişimi
     public void moveShape() {
+        if (x + shapeSizeX >= obstacleX) {
+            this.SPEED = 0;
+        }
         this.x += SPEED; // speed değişkeni kadar hareket et
         if (this.x > this.getWidth()) { // eğer sınırdan çıkarsa geri dön
             this.x = -50; // geri dönmek için -50 git

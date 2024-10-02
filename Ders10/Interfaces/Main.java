@@ -17,6 +17,7 @@ public class Main {
 interface MySpecialInterface {
 
     void run();
+
 }
 
 class Basic {

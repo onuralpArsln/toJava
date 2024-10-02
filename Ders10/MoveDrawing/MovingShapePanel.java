@@ -53,7 +53,9 @@ public class MovingShapePanel extends JPanel implements Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
+  
         // Start the animation in a new thread
         new Thread(panel).start();
+        System.out.println("selam");
     }
 }
