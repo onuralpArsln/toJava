@@ -56,6 +56,15 @@ public class UserInputMove extends JPanel implements Runnable, KeyListener {
         repaint(); // Paneli yeniden boyama isteği oluştur.
     }
 
+    // bu geçen hafta ki fonksiyon
+    public void moveShape() {
+        this.x += X_SPEED; // speed değişkeni kadar hareket et
+        if (this.x > this.getWidth()) { // eğer sınırdan çıkarsa geri dön
+            this.x = -50; // geri dönmek için -50 git
+        }
+        repaint(); // Paneli yeniden boyama isteği oluştur.
+    }
+
     @Override
     public void run() {
         while (true) {

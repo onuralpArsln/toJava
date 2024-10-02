@@ -5,6 +5,11 @@ public class CrashingShapes extends JPanel implements Runnable {
     // başlangıç noktaları
     private int x = 0;
     private int y = 50;
+    private int shapeSizeX = 50;
+    private int shapeSizeY = 50;
+    private int obstacleSizeX = 50;
+    private int obstacleSizeY = 50;
+
     private int obstacleX = 200;
     private int obstacleY = 50;
     // hız değeri
