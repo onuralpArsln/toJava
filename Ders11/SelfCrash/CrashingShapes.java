@@ -11,7 +11,7 @@ public class CrashingShapes extends JPanel implements Runnable {
     private final int obstacleSizeY = 50;
     private final int obstacleX = 200;
     private final int obstacleY = 50;
-    
+
     // hız değeri
     private final int SPEED = 2;
 
@@ -28,6 +28,9 @@ public class CrashingShapes extends JPanel implements Runnable {
         // Hareketli parça
         g2d.setColor(Color.GREEN);
         g2d.fillRect(x, y, shapeSizeX, shapeSizeY);
+
+        g2d.setColor(Color.BLACK); // Yazı rengi
+        g2d.drawString("X: " + x + ", Y: " + y, 10, 20); // Pozisyon bilgisi
 
     }
 
