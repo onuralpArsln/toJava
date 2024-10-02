@@ -5,13 +5,13 @@ public class CrashingShapes extends JPanel implements Runnable {
     // başlangıç noktaları
     private int x = 0;
     private int y = 50;
-    private int shapeSizeX = 50;
-    private int shapeSizeY = 50;
-    private int obstacleSizeX = 50;
-    private int obstacleSizeY = 50;
-
-    private int obstacleX = 200;
-    private int obstacleY = 50;
+    private final int shapeSizeX = 50;
+    private final int shapeSizeY = 50;
+    private final int obstacleSizeX = 50;
+    private final int obstacleSizeY = 50;
+    private final int obstacleX = 200;
+    private final int obstacleY = 50;
+    
     // hız değeri
     private final int SPEED = 2;
 
@@ -21,13 +21,13 @@ public class CrashingShapes extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        // bir kutu çiziyor
+        // engel
         g2d.setColor(Color.RED);
-        g2d.fillRect(obstacleX, obstacleY, 50, 50);
+        g2d.fillRect(obstacleX, obstacleY, obstacleSizeX, obstacleSizeY);
 
-        // bir kutu çiziyor
+        // Hareketli parça
         g2d.setColor(Color.GREEN);
-        g2d.fillRect(x, y, 50, 50);
+        g2d.fillRect(x, y, shapeSizeX, shapeSizeY);
 
     }
 
@@ -43,7 +43,7 @@ public class CrashingShapes extends JPanel implements Runnable {
     @Override
     public void run() {
         while (true) {
-            moveShape(); // Poziysonu güncellee ekranı yeniden çizdir
+            moveShape(); // Poziysonu güncelle ekranı yeniden çizdir
             try {
                 Thread.sleep(33); // sahneler arası bekle
             } catch (InterruptedException e) {
