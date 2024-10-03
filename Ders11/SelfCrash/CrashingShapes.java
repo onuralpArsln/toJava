@@ -4,7 +4,7 @@ import javax.swing.*;
 public class CrashingShapes extends JPanel implements Runnable {
     // başlangıç noktaları
     private int x = 0;
-    private int y = 50;
+    private int y = 20;
     private final int shapeSizeX = 50;
     private final int shapeSizeY = 50;
     private final int obstacleSizeX = 50;
@@ -13,7 +13,7 @@ public class CrashingShapes extends JPanel implements Runnable {
     private final int obstacleY = 50;
 
     // hız değeri
-    private int SPEED = 2;
+    private int SPEED = 3;
 
     // özel çizme mantığı
     @Override
@@ -36,12 +36,23 @@ public class CrashingShapes extends JPanel implements Runnable {
 
     // koordinat değişimi
     public void moveShape() {
-        if (x + shapeSizeX >= obstacleX) {
-            this.SPEED = 0;
+        // üst köşe obstacle y sınırları içinde mi ve ya alt köşe obstacle y sınırları
+        // içinde mi
+        if ((obstacleY <= y && y <= obstacleY + obstacleSizeY) || (obstacleY <= y + shapeSizeY && y
+                + shapeSizeY <= obstacleY + obstacleSizeY)) {
+            // sağdan çarpma
+            if (x + shapeSizeX >= obstacleX && x + shapeSizeX <= obstacleX + obstacleSizeX) {
+                this.SPEED = -3;
+            } // soldan çarpma
+            else if (obstacleX + obstacleSizeX >= x && obstacleX <= x) {
+                this.SPEED = 0;
+            }
         }
         this.x += SPEED; // speed değişkeni kadar hareket et
         if (this.x > this.getWidth()) { // eğer sınırdan çıkarsa geri dön
             this.x = -50; // geri dönmek için -50 git
+        } else if (this.x < -55) {
+            this.x = getWidth();
         }
         repaint(); // Paneli yeniden boyama isteği oluştur.
     }

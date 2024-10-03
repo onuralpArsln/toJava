@@ -58,3 +58,8 @@ cypherMachine ile etkişleşimi interface olarak yapalım sadece imza tanımlı 
 hunterlarda beceri alanı oluşturalım
 interfaceden gelen method eğer doğru skill varsa hutnerda cihaz bozma 
 survivorda ise tamir özelliği olsun hızlı tamir becerisi kontrolü
+
+
+9.10 
+
+hareketli örneğin ortasına bir engel koy ve çarpışmayı algıla öldür hızı sıfırla
