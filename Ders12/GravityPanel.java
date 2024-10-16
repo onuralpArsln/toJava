@@ -8,9 +8,13 @@ public class GravityPanel extends JPanel implements Runnable, KeyListener {
     // başlangıç noktaları
     private int x = 0;
     private int y = 50;
+    private int xx = 200;
+    private int yy = 303;
 
     private int cube_height = 50;
     private int cube_width = 50;
+    private int obstacle_height = 50;
+    private int obstacle_width = 50;
     // hız değeri
     private int speed_x = 1;
     private int speed_y = 1;
@@ -29,6 +33,16 @@ public class GravityPanel extends JPanel implements Runnable, KeyListener {
         // bir kutu çiziyor
         g2d.setColor(Color.RED);
         g2d.fillRect(this.x, this.y, cube_height, cube_width);
+        
+
+        g2d.setColor(Color.green);
+        g2d.fillRect(this.xx, this.yy, obstacle_height, obstacle_width);
+
+        if (colision()) {
+            g2d.setColor(Color.red);
+            g2d.drawString("GAME OVER", 150, 150);
+        }
+        
     }
 
     // koordinat değişimi
@@ -83,7 +97,7 @@ public class GravityPanel extends JPanel implements Runnable, KeyListener {
 
     @Override
     public void run() {
-        while (true) {
+        while (!colision()) {
             moveShape(); // Poziysonu güncellee ekranı yeniden çizdir
             gravitonalFall();
             repaint(); // Paneli yeniden boyama isteği oluştur.
@@ -95,7 +109,17 @@ public class GravityPanel extends JPanel implements Runnable, KeyListener {
 
         }
     }
+    public boolean colision() {
 
+        if (this.x + cube_width >= this.xx && this.x + cube_width < this.xx + obstacle_width && this.y + cube_height >= this.yy) {
+        return true ;
+        }
+        else if (this.y + cube_height >= this.yy && this.x + cube_width >= this.xx && this.x < this.xx + obstacle_width) {
+        return true ;
+
+        } 
+        return false;
+    }
     public static void main(String[] args) {
         JFrame frame = new JFrame("Gravity Example");
         GravityPanel panel = new GravityPanel();
@@ -107,10 +131,16 @@ public class GravityPanel extends JPanel implements Runnable, KeyListener {
 
         // tuşları çalışması için önemli
         frame.addKeyListener(panel);
-        frame.setFocusable(true);
+        frame.setFocusable(true); 
+
+        new Thread(panel).start();
+        System.out.println("selam"); }
+
+           
+
+            
+        
 
         // Start the animation in a new thread
-        new Thread(panel).start();
-        System.out.println("selam");
-    }
+    
 }
