@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     // başlangıç noktaları
     private int x = 30;
-    private int y = 303 ;
+    private int y = 303;
     private int xx = 380;
     private int yy = 303;
 
@@ -23,6 +23,7 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     private int speed_yy = 1;
     private int jump_strength = 30;
     private int puan = 0;
+    private Boolean gameStarted = false;
 
     // özel çizme mantığı
     @Override
@@ -36,7 +37,6 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         // bir kutu çiziyor
         g2d.setColor(Color.RED);
         g2d.fillRect(this.x, this.y, cube_height, cube_width);
-        
 
         g2d.setColor(Color.green);
         g2d.fillRect(this.xx, this.yy, obstacle_height, obstacle_width);
@@ -46,8 +46,12 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         if (colision()) {
             g2d.setColor(Color.red);
             g2d.drawString("GAME OVER", 150, 150);
+        } else if (!gameStarted) {
+            g2d.setColor(Color.green);
+            g2d.drawString("Press Space to start", 150, 150);
+
         }
-        
+
     }
 
     // koordinat değişimi
@@ -61,16 +65,16 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         }
 
     }
+
     public void moveObstacle() {
         this.xx -= speed_xx;
-        if (this.xx + obstacle_width< 0) {
+        if (this.xx + obstacle_width < 0) {
             this.xx = 380;
             this.yy = 303;
             this.puan += 1;
             if (this.speed_xx < 13) {
-            this.speed_xx = this.speed_xx + 1;
+                this.speed_xx = this.speed_xx + 1;
             }
-
 
         }
     }
@@ -84,10 +88,14 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) { // Space tuşuna basıldıysa
-
-            // Yukarı hareket
-            this.speed_y = jump_strength * -1; // yukarı gitmek için eksi yönde hareket
-            this.speed_x = 3;
+            System.out.println("space");
+            if (!gameStarted) {
+                gameStarted = true;
+            } else {
+                // Yukarı hareket
+                this.speed_y = jump_strength * -1; // yukarı gitmek için eksi yönde hareket
+                this.speed_x = 3;
+            }
 
         }
 
@@ -116,9 +124,11 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     @Override
     public void run() {
         while (!colision()) { // Poziysonu güncellee ekranı yeniden çizdir
-            gravitonalFall();
-            moveObstacle();
-            repaint(); // Paneli yeniden boyama isteği oluştur.
+            if (gameStarted) {
+                gravitonalFall();
+                moveObstacle();
+                repaint(); // Paneli yeniden boyama isteği oluştur.
+            }
             try {
                 Thread.sleep(33); // sahneler arası bekle
             } catch (InterruptedException e) {
@@ -127,17 +137,20 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
 
         }
     }
+
     public boolean colision() {
 
-        if (this.x + cube_width >= this.xx && this.x + cube_width < this.xx + obstacle_width && this.y + cube_height >= this.yy) {
-        return true ;
-        }
-        else if (this.y + cube_height >= this.yy && this.x + cube_width >= this.xx && this.x < this.xx + obstacle_width) {
-        return true ;
+        if (this.x + cube_width >= this.xx && this.x + cube_width < this.xx + obstacle_width
+                && this.y + cube_height >= this.yy) {
+            return true;
+        } else if (this.y + cube_height >= this.yy && this.x + cube_width >= this.xx
+                && this.x < this.xx + obstacle_width) {
+            return true;
 
-        } 
+        }
         return false;
     }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Gravity Example");
         Moving_obstacles panel = new Moving_obstacles();
@@ -149,16 +162,13 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
 
         // tuşları çalışması için önemli
         frame.addKeyListener(panel);
-        frame.setFocusable(true); 
+        frame.setFocusable(true);
+        frame.requestFocusInWindow(); // focus al
 
         new Thread(panel).start();
-        System.out.println("selam"); }
 
-           
+    }
 
-            
-        
+    // Start the animation in a new thread
 
-        // Start the animation in a new thread
-    
 }
