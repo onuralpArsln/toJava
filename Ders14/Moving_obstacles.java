@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 import javax.swing.*;
 
 // runnable ile thread işimiz kolaylaşacak bu bir thread tarafından işleri yapılır kılar
@@ -10,6 +11,7 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     private int y = 303;
     private int xx = 380;
     private int yy = 303;
+    Random random = new Random();
 
     private int cube_height = 50;
     private int cube_width = 50;
@@ -24,6 +26,9 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     private int jump_strength = 30;
     private int puan = 0;
     private Boolean gameStarted = false;
+
+    private int remainingJumps = 2;
+    private final int maxJumps = 2;
 
     // özel çizme mantığı
     @Override
@@ -73,15 +78,26 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
             this.yy = 303;
             this.puan += 1;
             if (this.speed_xx < 13) {
+
+                // buraya kutu yüksekliğini random yapabilirisin
+                int randomInt = random.nextInt(5);
                 this.speed_xx = this.speed_xx + 1;
             }
 
         }
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // bu method keylistener interfacesinde tanımlı olduğu için buraya tanımlandı
+    public void jump() {
+
+        if (this.isGrounded()) {
+            this.remainingJumps = this.maxJumps;
+        }
+
+        if (this.remainingJumps > 0) {
+            this.speed_y = jump_strength * -1; // yukarı gitmek için eksi yönde hareket
+            this.speed_x = 3;
+            this.remainingJumps--;
+        }
 
     }
 
@@ -93,11 +109,18 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
                 gameStarted = true;
             } else {
                 // Yukarı hareket
-                this.speed_y = jump_strength * -1; // yukarı gitmek için eksi yönde hareket
-                this.speed_x = 3;
+                this.jump();
             }
 
+        } else if (e.getKeyCode() == KeyEvent.VK_W) {
+            System.out.println("oyunu sifirla");
         }
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // bu method keylistener interfacesinde tanımlı olduğu için buraya tanımlandı
 
     }
 
@@ -107,18 +130,18 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
 
     }
 
-    public void gravitonalFall() {
+    private Boolean isGrounded() {
+        return this.y + cube_height >= this.getHeight();
+    }
 
+    public void gravitonalFall() {
         this.y += speed_y;
         this.speed_y += acceleration;
-
-        if (this.y + cube_height >= this.getHeight()) {
+        if (this.isGrounded()) {
             this.speed_y = 0;
             this.y = this.getHeight() - this.cube_height;
             this.speed_x = 1;
-
         }
-
     }
 
     @Override
@@ -128,6 +151,7 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
                 gravitonalFall();
                 moveObstacle();
                 repaint(); // Paneli yeniden boyama isteği oluştur.
+
             }
             try {
                 Thread.sleep(33); // sahneler arası bekle
@@ -166,6 +190,8 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         frame.requestFocusInWindow(); // focus al
 
         new Thread(panel).start();
+
+        System.out.println("selam");
 
     }
 

@@ -38,4 +38,5 @@ class Evaluater {
     static void runElement(MySpecialInterface element) {
         element.run();
     }
+
 }
