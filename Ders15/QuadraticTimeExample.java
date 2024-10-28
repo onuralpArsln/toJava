@@ -34,3 +34,4 @@ public class QuadraticTimeExample {
 // bu denklem n^2 elmanı yüzünden quadratic time olarak geçer
 // quadratic matematikte en büyük güçteki elamanı n^2 olan denklemlerdir
 // comes from the Latin word "quadratus," which means "square."
+// iç içe 3 loop olsa cubic time o(n^3)
