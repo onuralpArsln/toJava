@@ -34,7 +34,7 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     private Boolean gameStarted = false;
 
     private int remainingJumps = 2;
-    private final int maxJumps = 2;
+    private int maxJumps = 2;
 
     // özel çizme mantığı
     @Override
@@ -81,6 +81,10 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
                 this.puan += 1;
                 obstacle_height = 2 * random.nextInt(max - min + 1) + min; // Includes max
                 this.yy -= (obstacle_height - 50);
+
+                if (puan == 5) {
+                    this.maxJumps = 3;
+                }
 
                 if (this.speed_xx < 13) {
                     this.speed_xx = this.speed_xx + 1;
@@ -189,7 +193,7 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
 
             }
             try {
-                Thread.sleep(33); // sahneler arası bekle
+                Thread.sleep(30); // sahneler arası bekle
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

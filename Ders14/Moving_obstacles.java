@@ -175,6 +175,32 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         return false;
     }
 
+    public void resetGame() {
+
+        // başlangıç noktaları
+        x = 30;
+        y = 303;
+        xx = 380;
+        yy = 303;
+
+        cube_height = 50;
+        cube_width = 50;
+        obstacle_height = 50;
+        obstacle_width = 50;
+        // hız değeri
+        speed_x = 1;
+        speed_y = 1;
+        acceleration = 3;
+        speed_xx = 10;
+        speed_yy = 1;
+        jump_strength = 30;
+        puan = 0;
+        gameStarted = false;
+
+        remainingJumps = 2;
+
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Gravity Example");
         Moving_obstacles panel = new Moving_obstacles();
