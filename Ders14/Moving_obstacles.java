@@ -7,24 +7,15 @@ import javax.swing.*;
 // runnable ile thread işimiz kolaylaşacak bu bir thread tarafından işleri yapılır kılar
 public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     // başlangıç noktaları
- 
-    Random random = new Random();
-    int min = 25;
-    int max = 100;
-    int random_obstacle_height = random.nextInt(max - min + 1) + min; // Includes max
-
-    
-
     private int x = 30;
-    private int y = 303;
     private int y = 303;
     private int xx = 380;
     private int yy = 303;
-    
+    Random random = new Random();
 
     private int cube_height = 50;
     private int cube_width = 50;
-    private int obstacle_height = random_obstacle_height;
+    private int obstacle_height = 50;
     private int obstacle_width = 50;
     // hız değeri
     private int speed_x = 1;
@@ -64,12 +55,7 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
             g2d.setColor(Color.green);
             g2d.drawString("Press Space to start", 150, 150);
 
-        } else if (!gameStarted) {
-            g2d.setColor(Color.green);
-            g2d.drawString("Press Space to start", 150, 150);
-
         }
-
 
     }
 
@@ -77,7 +63,6 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
     public void moveShape() {
         this.x += speed_x; // speed değişkeni kadar hareket et
         if (this.x > this.getWidth()) { // eğer sınırdan çıkarsa geri dön
-            obstacle_height = random.nextInt(max - min + 1) + min; // Includes max
             this.x = -50; // geri dönmek için -50 git
             this.y = 50;
             this.speed_x = 1;
@@ -86,18 +71,16 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
 
     }
 
-
     public void moveObstacle() {
         this.xx -= speed_xx;
-        if (this.xx + obstacle_width < 0) {
         if (this.xx + obstacle_width < 0) {
             this.xx = 380;
             this.yy = 303;
             this.puan += 1;
             if (this.speed_xx < 13) {
 
-                
-                
+                // buraya kutu yüksekliğini random yapabilirisin
+                int randomInt = random.nextInt(5);
                 this.speed_xx = this.speed_xx + 1;
             }
 
@@ -179,7 +162,6 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         }
     }
 
-
     public boolean colision() {
 
         if (this.x + cube_width >= this.xx && this.x + cube_width < this.xx + obstacle_width
@@ -188,18 +170,10 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         } else if (this.y + cube_height >= this.yy && this.x + cube_width >= this.xx
                 && this.x < this.xx + obstacle_width) {
             return true;
-        if (this.x + cube_width >= this.xx && this.x + cube_width < this.xx + obstacle_width
-                && this.y + cube_height >= this.yy) {
-            return true;
-        } else if (this.y + cube_height >= this.yy && this.x + cube_width >= this.xx
-                && this.x < this.xx + obstacle_width) {
-            return true;
 
-        }
         }
         return false;
     }
-
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Gravity Example");
@@ -214,16 +188,12 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
         frame.addKeyListener(panel);
         frame.setFocusable(true);
         frame.requestFocusInWindow(); // focus al
-        frame.setFocusable(true);
-        frame.requestFocusInWindow(); // focus al
 
         new Thread(panel).start();
 
         System.out.println("selam");
 
     }
-
-    // Start the animation in a new thread
 
     // Start the animation in a new thread
 
