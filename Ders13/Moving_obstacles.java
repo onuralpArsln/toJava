@@ -17,7 +17,7 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
 
     private int x = 30;
     private int y = 303;
-    private int y = 303;
+    
     private int xx = 380;
     private int yy = 303;
     
@@ -101,7 +101,8 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
                 this.speed_xx = this.speed_xx + 1;
             }
 
-        }
+        } 
+    }
     }
 
     public void jump() {
@@ -187,16 +188,9 @@ public class Moving_obstacles extends JPanel implements Runnable, KeyListener {
             return true;
         } else if (this.y + cube_height >= this.yy && this.x + cube_width >= this.xx
                 && this.x < this.xx + obstacle_width) {
-            return true;
-        if (this.x + cube_width >= this.xx && this.x + cube_width < this.xx + obstacle_width
-                && this.y + cube_height >= this.yy) {
-            return true;
-        } else if (this.y + cube_height >= this.yy && this.x + cube_width >= this.xx
-                && this.x < this.xx + obstacle_width) {
-            return true;
-
-        }
-        }
+            return true; }
+        
+     
         return false;
     }
 
