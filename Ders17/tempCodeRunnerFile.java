@@ -1,0 +1,1 @@
+ student.getToSchool(4);
