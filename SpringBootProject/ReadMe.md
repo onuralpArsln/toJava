@@ -14,3 +14,19 @@ Eklenti için `Ctrl + Shift + P` tuşlarına basarak "Spring Initializr: Generat
 ## İnşa Aletleri
 
 Maven ve Gradle  java projeleri için inşa ve bağımlıklık yönetim araçlarıdır.
+
+Maven küçük projelerde standart yapıyı daha rahat sağlarken Gradle büyük projelerde özelleştirilmiş yapılar için verimlidir.
+
+# Spring Initilizr
+
+maven ile basit bir proje geliştirmek içi maven seç 
+
+terminalinden `java -version` ile versiyonunu kontrol et. ve initlzr için uygun versiyonu al 
+
+basit bir api için 
++ Spring Web 
++ Spring Boot DevTools 
+
+seç.
+
+projeni klasör içine oluştur
