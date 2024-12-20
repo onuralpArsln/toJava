@@ -30,3 +30,19 @@ basit bir api için
 seç.
 
 projeni klasör içine oluştur
+
+
+# İlk Kodları Eklemek 
+
+Api için bir end point ihtiyacımız var. Bunu bir hello world apisi yapacağız bu yüzden Bir hello world controlleri yazdık
+
+java"""
+
+    @GetMapping("/hello") 
+    public String sayHello() {
+        return "Hello, Spring API!";
+    }
+
+"""
+
+Buradaki  ` @GetMapping("/hello") `  sayesinde http://localhost:8080/hello adresinde api çağrılacak
