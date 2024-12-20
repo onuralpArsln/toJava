@@ -46,3 +46,44 @@ Api için bir end point ihtiyacımız var. Bunu bir hello world apisi yapacağı
 ```
 
 Buradaki  ` @GetMapping("/hello") `  sayesinde http://localhost:8080/hello adresinde api çağrılacak
+
+
+Peki bu controller nasıl keşfediliyor?
+
+Proje başlayınca spring boot otomatik olarak @RestController, @Service, ve @Component gibi anotasyonları arar. 
+
+```java
+
+@RestController 
+public class HelloController {}
+
+```
+
+`@RestController` yapısı ile bu class proje başlatılınca otomatik çağrılır yani ana projeni  editlemeden yeni end pointler ekleyebilirsin.
+
+
+## Projeni çalıştırmak
+
+
+Projenin kök adresinde
+
+maven için
+
+```bash 
+./mvnw spring-boot:run
+```
+
+gradle  için ise 
+
+```bash 
+./gradlew bootRun
+```
+
+Yazarak projeni çalıştır. Kök adresin içinde eğer maven ise mvnw  gradle ise pom.xml dosyları görünmeli yani kdolarının bulunduğu src klasörünün hemen üstünde olmalısın. aksi halde mvnw.cmd olmadan çalışmaz.
+
+```bash 
+http://localhost:8080/hello
+
+```
+
+Adresinde test et
