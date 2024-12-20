@@ -99,3 +99,5 @@ projeyi temizden build alma
 ./mvnw spring-boot:run
 ```
 
+Eğer internet bağlantın iyi değilse sıkıntı yaşarsın çünkü bu sistem maven wrapperi ile online olarak çalışıyor istersen maveni cihazına yükleyerek cihazında da çalışabilirsin
+
