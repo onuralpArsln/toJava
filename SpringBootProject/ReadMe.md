@@ -87,3 +87,15 @@ http://localhost:8080/hello
 ```
 
 Adresinde test et
+
+🚀🚀🚀
+
+## Olası sıkıntıların çözümler
+
+
+projeyi temizden build alma 
+```bash 
+./mvnw clean install
+./mvnw spring-boot:run
+```
+
