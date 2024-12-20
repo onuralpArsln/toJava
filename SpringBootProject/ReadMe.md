@@ -36,13 +36,13 @@ projeni klasör içine oluştur
 
 Api için bir end point ihtiyacımız var. Bunu bir hello world apisi yapacağız bu yüzden Bir hello world controlleri yazdık
 
-java"""
+```java
 
     @GetMapping("/hello") 
     public String sayHello() {
         return "Hello, Spring API!";
     }
 
-"""
+```
 
 Buradaki  ` @GetMapping("/hello") `  sayesinde http://localhost:8080/hello adresinde api çağrılacak
