@@ -101,3 +101,26 @@ projeyi temizden build alma
 
 Eğer internet bağlantın iyi değilse sıkıntı yaşarsın çünkü bu sistem maven wrapperi ile online olarak çalışıyor istersen maveni cihazına yükleyerek cihazında da çalışabilirsin
 
+## Geliştirme Aşamaları
+
+## Parametre Alan Modeller
+
+GreetingController.java da parametre alan bir model var peki parametreler nasıl alınır?
+
+"http://localhost:8080/greet?name=YourName"
+
+`/greet` adresinden sonra `?name=` ile parametreni verebilrsin.
+
+Daha fazla parametre olursa `&` ile parametrelerini yazabilrisin
+
+`http://localhost:8080/add?a=5&b=3`
+
+
+## Arayüz edinme
+
+Spring Boot daha ziyade arka plan işlemleri içindir bu yüzden GUI için dışarıdan bir sisteme ihtiyaç duyar. Bir web fraemworku ile geliştirdiğin sayfa Spring Boot Apine istek atarak çalışabilir. Ancak sadece spring boot ile GUI yapmak istersen bu da mümkün sadece büyük projelerde biraz sıkıntılı olabilir. 
+
+Basitçe bir html kodu döndürmek zaten browserinin bunu bir arayüz gibi yorumlamasına izin verecektir.  HtmlController ile bunu deneyebilrisin.
+
+
+Thymeleaf gibi bir yapı ile taslask sayfalar oluşturup onları döndürebilrisin
