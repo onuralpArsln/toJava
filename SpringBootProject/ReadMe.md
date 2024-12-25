@@ -124,3 +124,35 @@ Basitçe bir html kodu döndürmek zaten browserinin bunu bir arayüz gibi yorum
 
 
 Thymeleaf gibi bir yapı ile taslask sayfalar oluşturup onları döndürebilrisin
+
+
+## Basic user auth
+
+ Basit bir kullanıcı doğrulama sistemi kurmak için `pom.xml` dosyana eklenecek basit bir bağımlılık ile başlıyoruz
+
+ ```xml
+
+ <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+ 
+ ```
+
+şimdi yeni dependcyler iler bir clean install at, gradle veya maven kullanımına göre uygun komutu kullan
+
+```bash 
+mvn clean install
+```
+
+```bash
+./gradlew build --refresh-dependencies
+```
+
+
+ Artık bir güncelik configi lazım
+
+ `...\src\main\java\com\initapi\firstspring\config` proje dosylarının olduğu yere bir de config dosyası oluştur ve içine `SecurityConfig.java` oluşturduk bu hangi end pointlerin korunması gerektiğini belirtiyor.
+
+
+
