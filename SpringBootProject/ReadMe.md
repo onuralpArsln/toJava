@@ -154,5 +154,10 @@ mvn clean install
 
  `...\src\main\java\com\initapi\firstspring\config` proje dosylarının olduğu yere bir de config dosyası oluştur ve içine `SecurityConfig.java` oluşturduk bu hangi end pointlerin korunması gerektiğini belirtiyor.
 
+Ardından  bir user tanımı oluşturalım user bilgisini şimdi static ve hardcoded vereceğiz
+
+@Bean bağlantı yapısını belirler
+Tabi Protected classın açacağı bir de sayfanın controlleri oluştuurulmalı
+
 
 
