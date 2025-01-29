@@ -1,74 +1,76 @@
-
 import cv2
 import os
 import numpy as np
 
+size=2
+imageSource = 'a'
+windowSizeWidth=(45*2)+135
+windowSizeHeight=50*2
+
 # Load image
-image = cv2.imread('source\\a.jpg')
+image = cv2.imread(f'source\\{imageSource}.jpg')
+image=cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+image = cv2.resize(image, (45*size, 45*size))
+cv2.imshow("Source",image)
+cv2.resizeWindow("Source", windowSizeWidth, windowSizeHeight) 
 
-# Rotate by 45 degrees
-(h, w) = image.shape[:2]
-center = (w // 2, h // 2)
-matrix = cv2.getRotationMatrix2D(center, 45, 1.0)
-rotated = cv2.warpAffine(image, matrix, (w, h))
-cv2.imshow("rot",rotated)
+def rotateImg(img: cv2.typing.MatLike, angle:int,scale:int=1.0)->cv2.typing.MatLike:
+    
+    (h, w) = image.shape[:2]
+    center = (w // 2, h // 2)
+    matrix = cv2.getRotationMatrix2D(center, angle, scale)
+    rotated = cv2.warpAffine(image, matrix, (w, h))
+    return rotated
 
-
-
-# Define the source points (corners of the original image)
-src_points = np.float32([[0, 0], [44, 0], [0, 44]])
-
-# Define the destination points (where you want to warp the corners)
-dst_points = np.float32([[10, 10], [40, 5], [5, 40]])
-
-# Compute the affine transformation matrix
-M = cv2.getAffineTransform(src_points, dst_points)
-
-# Apply the affine transformation
-warped_image = cv2.warpAffine(image, M, (45, 45))
+rotated=rotateImg(image, 45)
+cv2.imshow("Rotate",rotated)
+cv2.resizeWindow("Rotate", windowSizeWidth, windowSizeHeight) 
 
 
-cv2.imshow('Warped Image', warped_image)
+def warpImagePerspective(img: cv2.typing.MatLike, warpBias:int=5)->cv2.typing.MatLike:
+    # Define the source points (corners of the original image)
+    src_points = np.float32([[0, 0], [44*size, 0], [0, 44*size], [44*size, 44*size]])
 
+    # Define the destination points (where you want to warp the corners)
+    dst_points = np.float32([
+        [warpBias, warpBias],  # Move top-left inward
+        [44*size - warpBias*2, warpBias],  # Move top-right inward
+        [warpBias*2, 44*size - warpBias],  # Move bottom-left inward
+        [44*size - warpBias, 44*size - warpBias*2]  # Move bottom-right inward
+    ])
+    # Compute the perspective transformation matrix
+    M = cv2.getPerspectiveTransform(src_points, dst_points)
 
+    # Apply the perspective transformation
+    perspect = cv2.warpPerspective(image, M, (45*size, 45*size))
+    return perspect
 
-
-# Define the source points (corners of the original image)
-src_points = np.float32([[0, 0], [44, 0], [0, 44], [44, 44]])
-
-# Define the destination points (where you want to warp the corners)
-dst_points = np.float32([[10, 10], [40, 5], [5, 40], [35, 35]])
-
-# Compute the perspective transformation matrix
-M = cv2.getPerspectiveTransform(src_points, dst_points)
-
-# Apply the perspective transformation
-perspect = cv2.warpPerspective(image, M, (45, 45))
-
+perspect = warpImagePerspective(image)
 # Save or display the result
-cv2.imshow('pers', perspect)
+cv2.imshow('Perspective', perspect)
+cv2.resizeWindow("Perspective", windowSizeWidth, windowSizeHeight)
 
 
-x, y = np.meshgrid(np.arange(45), np.arange(45))
+def sinusoidalWarp(img: cv2.typing.MatLike, x_warp:int=45,y_warp:int=45 )->cv2.typing.MatLike:
 
-# Apply a custom warp (e.g., sinusoidal warp) (change 45 to create )
-x_warped = x + 1 * np.sin(2 * np.pi * y / 45)
-y_warped = y + 1 * np.sin(2 * np.pi * x / 45)
+    x, y = np.meshgrid(np.arange(45*size), np.arange(45*size))
+    # Apply a custom warp (e.g., sinusoidal warp) (change 45 to create )
+    x_warped = x + 1 * np.sin(2 * np.pi * y / x_warp)
+    y_warped = y + 1 * np.sin(2 * np.pi * x / y_warp)
+    # Create the map for remapping
+    map_x = x_warped.astype(np.float32)
+    map_y = y_warped.astype(np.float32)
 
-# Create the map for remapping
-map_x = x_warped.astype(np.float32)
-map_y = y_warped.astype(np.float32)
+    # Apply the custom warp
+    warped = cv2.remap(image, map_x, map_y, interpolation=cv2.INTER_LINEAR)
+    return warped
 
-# Apply the custom warp
-war3 = cv2.remap(image, map_x, map_y, interpolation=cv2.INTER_LINEAR)
-
-
-cv2.imshow('Wwa', war3)
+war3= sinusoidalWarp(image)
+cv2.imshow('Warper', war3)
+cv2.resizeWindow("Warper", windowSizeWidth, windowSizeHeight)
 
 
 cv2.waitKey(0)
-
-# Close the window
 cv2.destroyAllWindows()
 
 """
