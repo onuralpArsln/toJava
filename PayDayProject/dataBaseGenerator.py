@@ -6,6 +6,7 @@ size=2
 imageSource = 'a'
 windowSizeWidth=(45*2)+135
 windowSizeHeight=50*2
+imageCounter=0
 
 # Load image
 image = cv2.imread(f'source\\{imageSource}.jpg')
@@ -68,6 +69,15 @@ def sinusoidalWarp(img: cv2.typing.MatLike, x_warp:int=45,y_warp:int=45 )->cv2.t
 war3= sinusoidalWarp(image)
 cv2.imshow('Warper', war3)
 cv2.resizeWindow("Warper", windowSizeWidth, windowSizeHeight)
+
+
+def saveImg(frame):
+    global imageSource
+    global imageCounter
+    output_path = os.path.join(imageSource, f"image_{imageCounter}.png")
+    cv2.imwrite(output_path, frame)
+    imageCounter+=1
+
 
 
 cv2.waitKey(0)
