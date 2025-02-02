@@ -74,11 +74,12 @@ cv2.resizeWindow("Warper", windowSizeWidth, windowSizeHeight)
 def saveImg(frame):
     global imageSource
     global imageCounter
-    output_path = os.path.join(imageSource, f"image_{imageCounter}.png")
+    os.makedirs(imageSource, exist_ok=True)
+    output_path = os.path.join(imageSource, f"image_{imageCounter}.png")  # Save as PNG
     cv2.imwrite(output_path, frame)
     imageCounter+=1
 
-
+saveImg(war3)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
