@@ -60,7 +60,7 @@ public class XOXBoard implements Runnable {
         }
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (spaces[i][j] != "x" || spaces[i][j] != "o") {
+                if (spaces[i][j] != "x" && spaces[i][j] != "o") {
                     System.out.println("yer var");
                     return false;
                 }
