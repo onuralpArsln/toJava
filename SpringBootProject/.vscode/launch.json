@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-FirstspringApplication<firstspring>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.initapi.firstspring.FirstspringApplication",
+      "projectName": "firstspring",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
