@@ -15,6 +15,9 @@ public class ArrList {
         System.out.println(people.get(2));
         System.out.println(people.size());
 
+        
+        System.out.println(people);
+
         people.set(0, "tumham");
         System.out.println(people);
 

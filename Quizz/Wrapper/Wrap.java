@@ -5,17 +5,17 @@ public class Wrap {
     public static void main(String[] args) {
         Integer x = 123;
         System.out.println(x.toString());// "123"
-
+       
         // nullable
-        int a = null; // hata
-        Integer b = null;
+        double a = null; // hata
+        Double b = null;
 
-        int testint = 5;
-        Integer wraptest = testint; // autoboxing
-        int unwrap = wraptest; // unboxing
+        double testint = 5.0;
+        Double wraptest = testint; // autoboxing
+        double unwrap = wraptest; // unboxing
 
         Integer nullpointer = null;
-        int y = nullpointer; // nullpointer errorr
+        int y = nullpointer; // nullpointer error
 
 
         ArrayList<int> list = new ArrayList<>(); 
