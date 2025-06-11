@@ -15,6 +15,7 @@ public class Ogrenci extends Insan {
         }
         if (ogrenci instanceof Insan) {
             Insan temp = (Insan) ogrenci;
+            // stringler == yerine .equals ile kıyaslandı
             if (this.getIsim().equals(temp.getIsim()) && this.getKimlikNo() == temp.getKimlikNo()) {
                 return true;
             }

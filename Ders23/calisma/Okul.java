@@ -7,6 +7,7 @@ public class Okul {
     }
 
     public void addToSchool(Insan insan) throws EqualsException {
+        // for each döngüsüne geçildi
         for (Ogrenci ogrenci : ogrenciler) {
             if (ogrenci.equals(insan)) {
                 throw new EqualsException();
